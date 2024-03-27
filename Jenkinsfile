@@ -38,5 +38,10 @@ pipeline {
                 sh 'docker push ariz1985/insure-me1.0'
             }
         }
+        stage('Ansible Mgmt'){
+            steps{
+                ansiblePlaybook credentialsId: '28a80acf-ff28-4903-896e-bde05b899974', disableHostKeyChecking: true, installation: 'Ansible', inventory: '/etc/ansible/hosts', playbook: 'ansible.yml', vaultTmpPath: ''
+            }
+        }
     }
 }

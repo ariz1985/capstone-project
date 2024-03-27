@@ -28,7 +28,7 @@ pipeline {
         }
         stage('Docker Hub Login'){
             steps{
-                withCredentials([usernamePassword(credentialsId: '6f4d93f9-9881-4f8a-a9a4-5b1b7ec04309', passwordVariable: 'docker_pass', usernameVariable: 'docker_usr')]) {
+                withCredentials([usernamePassword(credentialsId: '236db16b-0abd-4570-942b-e8dbca3b72c7', passwordVariable: 'docker_pass', usernameVariable: 'docker_usr')]) {
                     sh 'docker login -u $docker_usr -p $docker_pass'
                 }
             }
@@ -40,7 +40,7 @@ pipeline {
         }
         stage('Ansible Mgmt'){
             steps{
-                ansiblePlaybook credentialsId: '28a80acf-ff28-4903-896e-bde05b899974', disableHostKeyChecking: true, installation: 'Ansible', inventory: '/etc/ansible/hosts', playbook: 'ansible.yml', vaultTmpPath: ''
+                ansiblePlaybook credentialsId: 'ansible-ssh', disableHostKeyChecking: true, installation: 'Ansible', inventory: '/etc/ansible/hosts', playbook: 'ansible.yml', vaultTmpPath: ''
             }
         }
     }

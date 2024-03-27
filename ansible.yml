@@ -12,6 +12,7 @@
     become_user: root
 
   - name: Start Docker service
+    command: sudo systemctl enable docker
     command: sudo systemctl start docker
     become: yes
     become_user: root

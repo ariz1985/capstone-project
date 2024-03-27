@@ -7,7 +7,7 @@
     command: sudo apt update
 
   - name: Install Docker
-    command: sudo apt install install docker -y
+    command: sudo apt install install docker.io -y
     become: yes
     become_user: root
 
